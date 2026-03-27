@@ -1,4 +1,5 @@
 import axios from "axios";
+import type { IMovie } from "../@types/movie";
 
 
 const api = axios.create({
@@ -13,3 +14,10 @@ const api = axios.create({
 })
 
 export default api;
+
+export const MovieAPI = {
+    async getAll(){
+        const response = await api.get('/movie/popular');
+        return response.data.results as IMovie[];
+    }
+}
